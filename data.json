@@ -1,0 +1,10 @@
+{
+  "personaggi": [
+    {"nome": "Marco", "numero": "+39 345 1234567", "colore": "red"},
+    {"nome": "Elena", "numero": "+39 345 7654321", "colore": "blue"}
+  ],
+  "messaggi": [
+    {"mittente": "Marco", "testo": "Ho lasciato un indizio nel corridoio."},
+    {"mittente": "Elena", "testo": "Ricevuto, lo controllo subito."}
+  ]
+}
