@@ -1,2 +1,10 @@
 body { font-family: Arial; background-color: #f0f0f0; padding: 20px; }
 #chat { border: 1px solid #ccc; padding: 10px; background-color: #fff; }
+.chatItem {
+  background: #2c2c2e;
+  padding: 12px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-align: left;
+}
