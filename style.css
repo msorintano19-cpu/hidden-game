@@ -1,350 +1,74 @@
-body {
-  margin:0;
-  font-family: -apple-system, BlinkMacSystemFont;
-  background: #f2f2f2;
-  text-align: center;
-}
-
-button {
-  border: none;
-  border-radius: 12px;
-  padding: 12px 24px;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.hidden { display: none; }
-
-/* MOCKUP IPHONE */
-.mockup {
-  width: 360px;
-  height: 720px;
-  margin: 20px auto;
-  background: #fff;
-  border-radius: 40px;
-  border: 2px solid #ccc;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-/* STATUS BAR */
-.statusbar {
-  height: 28px;
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-  padding: 4px 12px;
-  background: #f7f7f7;
-  color: #000;
-  align-items: center;
-}
-
-/* SCREEN */
-.screen {
-  flex: 1;
-  background: #f7f7f7;
-  padding: 10px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 90px;
-  gap: 12px;
-  position: relative;
-}
-
-/* APP ICONS */
-.app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.app span {
-  font-size: 12px;
-  margin-top: 6px;
-  text-align: center;
-}
-
-/* CODE ICON STYLES */
-.icon {
-  width: 45px;
-  height: 45px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 24px;
-}
-
-/* Color & symbols */
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>WhatsApp Icon</title>
-<style>
-  .whatsapp-icon {
-    width: 60px;
-    height: 60px;
-    background-color: #25D366; /* verde WhatsApp */
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    transition: transform 0.2s;
-  }
-
-  .whatsapp-icon:hover {
-    transform: scale(1.1);
-  }
-
-  .whatsapp-icon img {
-    width: 35px;
-    height: 35px;
-  }
-</style>
-</head>
-<body>
-
-<!-- Link WhatsApp -->
-<a class="whatsapp-icon" href="https://wa.me/1234567890" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-</a>
-
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="it">
-<head>
-<meta charset="UTF-8">
-<title>Memo Icon</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup iPhone</title>
 <style>
   body {
-    font-family: sans-serif;
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
   }
 
-  .memo-icon {
+  .iphone {
+    width: 300px;
+    height: 600px;
+    border: 16px solid #000;
+    border-radius: 40px;
+    background: #fff;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .iphone::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 60px;
-    height: 60px;
-    background-color: #FFD966;
-    border-radius: 10px;
+    height: 5px;
+    background: #333;
+    border-radius: 3px;
+  }
+
+  .screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    overflow: hidden;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    transition: transform 0.2s;
+    background: url('https://via.placeholder.com/300x600') center/cover no-repeat;
   }
 
-  .memo-icon:hover {
-    transform: scale(1.1);
-  }
-
-  .memo-icon svg {
-    width: 30px;
-    height: 30px;
-    fill: #333;
-  }
-
-  /* Memo area nascosta */
-  #memoArea {
-    display: none;
-    margin-top: 20px;
-  }
-
-  #memoArea textarea {
-    width: 300px;
-    height: 200px;
-    font-size: 16px;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid #FFD966;
-    resize: none;
-  }
-</style>
-</head>
-<body>
-
-<!-- Icon Memo -->
-<div class="memo-icon" onclick="toggleMemo()">
-  <svg viewBox="0 0 24 24">
-    <path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm2 2h10v2H7V7zm0 4h10v2H7v-2zm0 4h6v2H7v-2z"/>
-  </svg>
-</div>
-
-<!-- Area Memo -->
-<div id="memoArea">
-  <textarea placeholder="Scrivi i tuoi appunti qui..."></textarea>
-</div>
-
-<script>
-  function toggleMemo() {
-    const memo = document.getElementById('memoArea');
-    if (memo.style.display === "none" || memo.style.display === "") {
-      memo.style.display = "block";
-    } else {
-      memo.style.display = "none";
-    }
-  }
-</script>
-
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="it">
-<head>
-<meta charset="UTF-8">
-<title>Safari Icon</title>
-<style>
-  .safari-icon {
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    background-color: #007aff; /* blu Safari */
+  .home-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background: #333;
     border-radius: 50%;
-    text-align: center;
-    line-height: 60px;
-    transition: transform 0.2s;
-  }
-
-  .safari-icon:hover {
-    transform: scale(1.1);
-  }
-
-  .safari-icon svg {
-    width: 35px;
-    height: 35px;
-    vertical-align: middle;
-    fill: white;
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.3);
   }
 </style>
 </head>
 <body>
 
-<a href="https://www.google.com" target="_blank" class="safari-icon">
-  <svg viewBox="0 0 24 24">
-    <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 2c1.657 0 3.156.672 4.243 1.757S18 10.343 18 12s-.672 3.156-1.757 4.243S13.657 18 12 18s-3.156-.672-4.243-1.757S6 13.657 6 12s.672-3.156 1.757-4.243S10.343 6 12 6zm0 1a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/>
-  </svg>
-</a>
+<div class="iphone">
+  <div class="screen">
+    <!-- Qui puoi aggiungere qualsiasi contenuto o app mockup -->
+  </div>
+  <div class="home-button"></div>
+</div>
 
 </body>
 </html>
-.memo-icon { background: #FFD60A; }
-.instagram-icon { background: #C13584; }
-.facebook-icon { background: #1877F2; font-weight:bold; }
-.spotify-icon { background: #1DB954; }
-.map-icon { background: #34C759; }
-.clock-icon { background: #000000; }
-.settings-icon { background: #8E8E93; }
-.appstore-icon { background: #007AFF; }
-
-/* Add symbol inside icon div */
-.icon::after {
-  content: attr(data-symbol);
-  font-size: 24px;
-}
-
-/* APP VIEW */
-.appHeader {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-  padding: 5px 10px;
-  background: #f0f0f0;
-  border-bottom: 1px solid #ccc;
-}
-
-.appHeader button {
-  padding: 6px 12px;
-  font-size: 16px;
-}
-
-#appContent {
-  background: #fff;
-  flex: 1;
-  padding: 10px;
-  border-radius: 10px;
-  overflow-y: auto;
-  text-align: left;
-}
-
-/* HOME BAR */
-.homebar {
-  width: 100px;
-  height: 5px;
-  background: rgba(0,0,0,0.2);
-  border-radius: 5px;
-  margin: 8px auto;
-}
-
-/* TRANSIZIONE APERTURA APP */
-.appTransition {
-  transform: scale(0.9);
-  opacity: 0;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-.appTransition.show {
-  transform: scale(1);
-  opacity: 1;
-}
-
-/* SWIPE UP */
-#appView.swipeUp {
-  transform: translateY(-100%);
-  opacity: 0;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-/* CHAT STILE WHATSAPP */
-.chatMessage {
-  margin: 6px 0;
-  padding: 8px 12px;
-  border-radius: 18px;
-  max-width: 80%;
-}
-
-.chatMessage.user {
-  background: #25D366;
-  color: #fff;
-  margin-left: auto;
-  text-align: right;
-}
-
-.chatMessage.contact {
-  background: #ECE5DD;
-  color: #000;
-  margin-right: auto;
-  text-align: left;
-}
-
-/* EMAIL STILE GMAIL */
-.emailItem {
-  border-bottom: 1px solid #ddd;
-  padding: 10px;
-}
-
-.emailSender {
-  font-weight: bold;
-}
-
-.emailSubject {
-  color: #555;
-  margin-top: 4px;
-}
