@@ -9,23 +9,38 @@
 
 <!-- START -->
 <div id="start">
-  <button id="openPhone">📱 Cellulare di Luca</button>
+  <button id="openPhone">📱 Apri il cellulare di Luca</button>
 </div>
 
-<!-- IPHONE -->
+<!-- TELEFONO IPHONE -->
 <div id="phone" class="hidden">
   <div class="iphone">
-    <div class="statusbar">📶 21:12 🔋</div>
 
-    <!-- HOME -->
-    <div id="home" class="screen">
-      <div class="app" onclick="openApp('whatsapp')">🟢<span>WhatsApp</span></div>
-      <div class="app" onclick="openApp('email')">📧<span>Email</span></div>
-      <div class="app" onclick="openApp('google')">🌐<span>Google</span></div>
-      <div class="app" onclick="openApp('memo')">📝<span>Memo</span></div>
+    <!-- BORDO SUPERIORE + STATUS BAR -->
+    <div class="statusbar">
+      <span>09:41</span>
+      <span>📶</span>
+      <span>🔋 100%</span>
     </div>
 
-    <!-- APP VIEW -->
+    <!-- SCHERMO IPHONE -->
+    <div id="home" class="screen">
+      <!-- RIGA 1 -->
+      <div class="app" onclick="openApp('whatsapp')">
+        🟢<span>WhatsApp</span>
+      </div>
+      <div class="app" onclick="openApp('email')">
+        📧<span>Email</span>
+      </div>
+      <div class="app" onclick="openApp('google')">
+        🌐<span>Google</span>
+      </div>
+      <div class="app" onclick="openApp('memo')">
+        📝<span>Memo</span>
+      </div>
+    </div>
+
+    <!-- SCHERMATA APP -->
     <div id="appView" class="screen hidden">
       <div class="appHeader">
         <button onclick="goBack()">⬅︎</button>
@@ -33,6 +48,9 @@
       </div>
       <div id="appContent"></div>
     </div>
+
+    <!-- BORDO INFERIORE IPHONE (HOME BAR) -->
+    <div class="homebar"></div>
 
   </div>
 </div>
