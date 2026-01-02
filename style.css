@@ -82,9 +82,168 @@ button {
 }
 
 /* Color & symbols */
-.whatsapp-icon { background: #25D366; }
-.mail-icon { background: #D44638; }
-.safari-icon { background: #0A84FF; }
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>WhatsApp Icon</title>
+<style>
+  .whatsapp-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #25D366; /* verde WhatsApp */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+  }
+
+  .whatsapp-icon:hover {
+    transform: scale(1.1);
+  }
+
+  .whatsapp-icon img {
+    width: 35px;
+    height: 35px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Link WhatsApp -->
+<a class="whatsapp-icon" href="https://wa.me/1234567890" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Memo Icon</title>
+<style>
+  body {
+    font-family: sans-serif;
+    padding: 20px;
+  }
+
+  .memo-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #FFD966;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+  }
+
+  .memo-icon:hover {
+    transform: scale(1.1);
+  }
+
+  .memo-icon svg {
+    width: 30px;
+    height: 30px;
+    fill: #333;
+  }
+
+  /* Memo area nascosta */
+  #memoArea {
+    display: none;
+    margin-top: 20px;
+  }
+
+  #memoArea textarea {
+    width: 300px;
+    height: 200px;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #FFD966;
+    resize: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- Icon Memo -->
+<div class="memo-icon" onclick="toggleMemo()">
+  <svg viewBox="0 0 24 24">
+    <path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm2 2h10v2H7V7zm0 4h10v2H7v-2zm0 4h6v2H7v-2z"/>
+  </svg>
+</div>
+
+<!-- Area Memo -->
+<div id="memoArea">
+  <textarea placeholder="Scrivi i tuoi appunti qui..."></textarea>
+</div>
+
+<script>
+  function toggleMemo() {
+    const memo = document.getElementById('memoArea');
+    if (memo.style.display === "none" || memo.style.display === "") {
+      memo.style.display = "block";
+    } else {
+      memo.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Safari Icon</title>
+<style>
+  .safari-icon {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background-color: #007aff; /* blu Safari */
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
+    transition: transform 0.2s;
+  }
+
+  .safari-icon:hover {
+    transform: scale(1.1);
+  }
+
+  .safari-icon svg {
+    width: 35px;
+    height: 35px;
+    vertical-align: middle;
+    fill: white;
+  }
+</style>
+</head>
+<body>
+
+<a href="https://www.google.com" target="_blank" class="safari-icon">
+  <svg viewBox="0 0 24 24">
+    <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 2c1.657 0 3.156.672 4.243 1.757S18 10.343 18 12s-.672 3.156-1.757 4.243S13.657 18 12 18s-3.156-.672-4.243-1.757S6 13.657 6 12s.672-3.156 1.757-4.243S10.343 6 12 6zm0 1a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/>
+  </svg>
+</a>
+
+</body>
+</html>
 .memo-icon { background: #FFD60A; }
 .instagram-icon { background: #C13584; }
 .facebook-icon { background: #1877F2; font-weight:bold; }
