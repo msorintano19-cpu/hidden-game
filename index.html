@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<title>Hidden Game – PROTOCOLLO ZERO</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Hidden Game – Protocollo Zero</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Hidden Game – PROTOCOLLO ZERO</h1>
-<div id="chat"></div>
+
+<!-- START -->
+<div id="start">
+  <button id="openPhone">📱 Cellulare di Luca</button>
+</div>
+
+<!-- IPHONE -->
+<div id="phone" class="hidden">
+  <div class="iphone">
+    <div class="statusbar">📶 21:12 🔋</div>
+
+    <!-- HOME -->
+    <div id="home" class="screen">
+      <div class="app" onclick="openApp('whatsapp')">🟢<span>WhatsApp</span></div>
+      <div class="app" onclick="openApp('email')">📧<span>Email</span></div>
+      <div class="app" onclick="openApp('google')">🌐<span>Google</span></div>
+      <div class="app" onclick="openApp('memo')">📝<span>Memo</span></div>
+    </div>
+
+    <!-- APP VIEW -->
+    <div id="appView" class="screen hidden">
+      <div class="appHeader">
+        <button onclick="goBack()">⬅︎</button>
+        <span id="appTitle"></span>
+      </div>
+      <div id="appContent"></div>
+    </div>
+
+  </div>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
