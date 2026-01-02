@@ -93,6 +93,42 @@ body {
 /* Colori icone come iOS */
 .app[data-app="Mail"] { background: #007aff; }
 .app[data-app="WhatsApp"] { background: #25D366; }
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Icon</title>
+  <style>
+    .whatsapp-icon {
+      width: 60px;       /* dimensione icona */
+      height: 60px;
+      border-radius: 12px; /* angoli arrotondati */
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .whatsapp-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .whatsapp-icon:hover {
+      transform: scale(1.1); /* effetto hover */
+    }
+  </style>
+</head>
+<body>
+
+  <a href="https://wa.me/" target="_blank" class="whatsapp-icon">
+    <img src="https://img.freepik.com/vettori-premium/icona-quadrata-logo-whatsapp_444390-16602.jpg" alt="WhatsApp">
+  </a>
+
+</body>
+</html>
+
 .app[data-app="Safari"] { background: #0a84ff; }
 .app[data-app="Memo"] { background: #ffcc00; color: #000; }
 .app[data-app="Foto"] { background: linear-gradient(45deg, #fcdc00, #ff3b30, #007aff); }
