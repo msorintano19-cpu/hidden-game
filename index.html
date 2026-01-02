@@ -45,3 +45,249 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+    width: 60px;
+    height: 5px;
+    background: #333;
+    border-radius: 3px;
+  }
+
+  /* Screen */
+  .screen {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 80px;
+    gap: 12px;
+    padding: 20px 10px;
+    justify-items: center;
+    align-items: center;
+    background: #fff;
+  }
+
+  .app {
+    width: 60px;
+    height: 60px;
+    background: #eee;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 28px;
+    transition: transform 0.2s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    position: relative;
+  }
+
+  .app span {
+    position: absolute;
+    bottom: -18px;
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .app:hover {
+    transform: scale(1.1);
+  }
+
+  /* Dock */
+  .dock {
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+    background: rgba(0,0,0,0.05);
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+
+  /* Popup App */
+  .popup {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    right: 20px;
+    bottom: 50px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: none;
+    flex-direction: column;
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: #f1f1f1;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .popup-header h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .close-btn {
+    padding: 6px 12px;
+    background: #007aff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .popup-content {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    font-size: 14px;
+    background: #fafafa;
+  }
+
+  /* WhatsApp style */
+  .message {
+    margin: 6px 0;
+    padding: 8px 12px;
+    border-radius: 18px;
+    max-width: 75%;
+    word-wrap: break-word;
+  }
+
+  .from-luca {
+    background: #dcf8c6;
+    align-self: flex-end;
+  }
+
+  .from-other {
+    background: #fff;
+    align-self: flex-start;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="iphone">
+  <div class="top-bar">
+    <span>📶 9:41</span>
+    <div class="capsula"></div>
+    <span>🔋 100%</span>
+  </div>
+
+  <div class="screen" id="home">
+    <!-- Icone principali -->
+    <div class="app" data-app="Mail">📧<span>Mail</span></div>
+    <div class="app" data-app="Orologio">⏰<span>Orologio</span></div>
+    <div class="app" data-app="AppStore">🛍️<span>App Store</span></div>
+    <div class="app" data-app="Memo">📝<span>Memo</span></div>
+
+    <div class="app" data-app="Mappe">🗺️<span>Mappe</span></div>
+    <div class="app" data-app="Facebook">📘<span>Facebook</span></div>
+    <div class="app" data-app="Instagram">📸<span>Instagram</span></div>
+    <div class="app" data-app="Spotify">🎵<span>Spotify</span></div>
+
+    <div class="app" data-app="WhatsApp">💬<span>WhatsApp</span></div>
+    <div class="app" data-app="Safari">🌐<span>Safari</span></div>
+    <div class="app" data-app="Impostazioni">⚙️<span>Impostazioni</span></div>
+    <div class="app" data-app="Foto">🖼️<span>Foto</span></div>
+  </div>
+
+  <!-- Dock -->
+  <div class="dock">
+    <div class="app" data-app="Mail">📧<span>Mail</span></div>
+    <div class="app" data-app="WhatsApp">💬<span>WhatsApp</span></div>
+    <div class="app" data-app="Safari">🌐<span>Safari</span></div>
+    <div class="app" data-app="Memo">📝<span>Memo</span></div>
+  </div>
+
+  <!-- Popup App -->
+  <div class="popup" id="popup">
+    <div class="popup-header">
+      <h2 id="app-title">App</h2>
+      <button class="close-btn" onclick="closeApp()">Chiudi</button>
+    </div>
+    <div class="popup-content" id="app-content">
+      <!-- Contenuti dinamici qui -->
+    </div>
+  </div>
+
+</div>
+
+<script>
+const apps = document.querySelectorAll('.app');
+const popup = document.getElementById('popup');
+const appTitle = document.getElementById('app-title');
+const appContent = document.getElementById('app-content');
+
+apps.forEach(app => {
+  app.addEventListener('click', () => {
+    const appName = app.getAttribute('data-app');
+    appTitle.textContent = appName;
+    popup.style.display = 'flex';
+    appContent.innerHTML = '';
+
+    if(appName === 'WhatsApp') loadWhatsApp();
+    else if(appName === 'Mail') loadMail();
+    else if(appName === 'Safari') loadSafari();
+    else if(appName === 'Memo') loadMemo();
+    else appContent.innerHTML = `<p>${appName} non ancora attiva.</p>`;
+  });
+});
+
+function closeApp() {
+  popup.style.display = 'none';
+}
+
+// --- WhatsApp content ---
+function loadWhatsApp() {
+  const chats = [
+    {from:'other', text:'Non riesco a dormire.'},
+    {from:'luca', text:'Non stai sbagliando. Stai interrompendo il processo.'},
+    {from:'other', text:'E se perdo il controllo?'},
+    {from:'luca', text:'Il controllo non si cerca. Arriva da solo.'},
+    {from:'other', text:'Ma fa paura restare da soli così.'},
+    {from:'luca', text:'L’isolamento è una fase necessaria.'},
+    {from:'other', text:'Quindi devo solo… lasciar succedere?'},
+    {from:'luca', text:'Non forzare. Non interrompere.'}
+  ];
+  chats.forEach(msg=>{
+    const div = document.createElement('div');
+    div.className = 'message ' + (msg.from==='luca'?'from-luca':'from-other');
+    div.textContent = msg.text;
+    appContent.appendChild(div);
+  });
+}
+
+// --- Mail content ---
+function loadMail() {
+  const mails = [
+    {from:'Marco', subject:'Chiarimento', text:'Buongiorno dottore, volevo ringraziarla per il lavoro fatto...'},
+    {from:'Ordine Psicologi', subject:'Segnalazione archiviata', text:'Gentile dott. Ferretti, la segnalazione è stata archiviata...'},
+    {from:'Elena', subject:'Luca', text:'Non so se sto facendo la cosa giusta...'},
+    {from:'Studio Ferretti', subject:'Promemoria appuntamento', text:'Si ricorda l’appuntamento previsto per il giorno 15/03/2025...'}
+  ];
+  mails.forEach(mail=>{
+    const div = document.createElement('div');
+    div.style.borderBottom='1px solid #ccc';
+    div.style.padding='8px 0';
+    div.innerHTML=`<b>${mail.from}</b> - <i>${mail.subject}</i><br>${mail.text}`;
+    appContent.appendChild(div);
+  });
+}
+
+// --- Safari content ---
+function loadSafari() {
+  appContent.innerHTML='<p>Pagina web di prova.</p>';
+}
+
+// --- Memo ---
+function loadMemo() {
+  appContent.innerHTML='<p>14/03/2025: Lasciare che il processo si chiuda.</p>';
+}
+</script>
+
+</body>
+</html>
