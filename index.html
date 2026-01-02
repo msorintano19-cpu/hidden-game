@@ -2,46 +2,52 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Hidden Game – Protocollo Zero</title>
+  <title>Hidden Game – Cellulare di Luca</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- START -->
 <div id="start">
   <button id="openPhone">📱 Apri il cellulare di Luca</button>
 </div>
 
-<!-- TELEFONO IPHONE -->
 <div id="phone" class="hidden">
   <div class="iphone">
 
-    <!-- BORDO SUPERIORE + STATUS BAR -->
-    <div class="statusbar">
-      <span>09:41</span>
-      <span>📶</span>
-      <span>🔋 100%</span>
+    <!-- Notch -->
+    <div class="notch">
+      <div class="camera"></div>
+      <div class="speaker"></div>
     </div>
 
-    <!-- SCHERMO IPHONE -->
+    <!-- Status bar -->
+    <div class="statusbar">
+      <span class="time">09:41</span>
+      <span class="status-icons">📶 🔔 🔋 100%</span>
+    </div>
+
+    <!-- HOME SCREEN -->
     <div id="home" class="screen">
-      <!-- RIGA 1 -->
       <div class="app" onclick="openApp('whatsapp')">
-        🟢<span>WhatsApp</span>
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png"/>
+        <span>WhatsApp</span>
       </div>
       <div class="app" onclick="openApp('email')">
-        📧<span>Email</span>
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png"/>
+        <span>Email</span>
       </div>
       <div class="app" onclick="openApp('google')">
-        🌐<span>Google</span>
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/google-logo.png"/>
+        <span>Google</span>
       </div>
       <div class="app" onclick="openApp('memo')">
-        📝<span>Memo</span>
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/note.png"/>
+        <span>Memo</span>
       </div>
     </div>
 
     <!-- SCHERMATA APP -->
-    <div id="appView" class="screen hidden">
+    <div id="appView" class="screen hidden appTransition">
       <div class="appHeader">
         <button onclick="goBack()">⬅︎</button>
         <span id="appTitle"></span>
@@ -49,20 +55,14 @@
       <div id="appContent"></div>
     </div>
 
-    <!-- BORDO INFERIORE IPHONE (HOME BAR) -->
+    <!-- Home bar (inferiore) -->
     <div class="homebar"></div>
 
+    <!-- Side button (per realismo) -->
+    <div class="side-button"></div>
   </div>
 </div>
 
 <script src="script.js"></script>
 </body>
 </html>
-<!-- SCHERMATA APP -->
-<div id="appView" class="screen hidden appTransition">
-  <div class="appHeader">
-    <button onclick="goBack()">⬅︎</button>
-    <span id="appTitle"></span>
-  </div>
-  <div id="appContent"></div>
-</div>
