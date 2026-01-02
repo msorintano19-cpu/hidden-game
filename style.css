@@ -1,10 +1,10 @@
-/* BODY & FONTE */
+/* BODY */
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0; /* sfondo generale */
+  background-color: #f0f0f0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   margin: 0;
 }
@@ -53,42 +53,56 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 80px;
-  gap: 12px;
+  gap: 15px;
   padding: 20px 10px;
   justify-items: center;
   align-items: center;
   background: #fff;
-  transition: all 0.3s ease;
 }
 
-/* ICONE APP */
+/* ICONE APP - stile iOS reale */
 .app {
   width: 60px;
   height: 60px;
-  background: #eee;
   border-radius: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-size: 28px;
-  transition: transform 0.2s, box-shadow 0.2s;
   position: relative;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  font-size: 28px;
+  color: white;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .app span {
   position: absolute;
   bottom: -18px;
   font-size: 12px;
-  text-align: center;
   width: 100%;
+  text-align: center;
+  color: #333;
 }
 
 .app:hover {
   transform: scale(1.1);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
 }
+
+/* Colori icone come iOS */
+.app[data-app="Mail"] { background: #007aff; }
+.app[data-app="WhatsApp"] { background: #25D366; }
+.app[data-app="Safari"] { background: #0a84ff; }
+.app[data-app="Memo"] { background: #ffcc00; color: #000; }
+.app[data-app="Foto"] { background: linear-gradient(45deg, #fcdc00, #ff3b30, #007aff); }
+.app[data-app="AppStore"] { background: #007aff; }
+.app[data-app="Mappe"] { background: #34c759; }
+.app[data-app="Impostazioni"] { background: #8e8e93; }
+.app[data-app="Facebook"] { background: #4267B2; }
+.app[data-app="Instagram"] { background: linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5); }
+.app[data-app="Spotify"] { background: #1DB954; }
+.app[data-app="Orologio"] { background: #000; }
 
 /* DOCK */
 .dock {
@@ -147,7 +161,7 @@ body {
   background: #fafafa;
 }
 
-/* WHATSAPP MESSAGGI */
+/* MESSAGGI WHATSAPP */
 .message {
   margin: 6px 0;
   padding: 8px 12px;
@@ -182,17 +196,4 @@ body {
 
 .popup-content::-webkit-scrollbar-track {
   background: rgba(0,0,0,0.05);
-}
-
-/* TRANSIZIONE DOLCE APERTURA */
-.popup.show {
-  opacity: 1;
-  transform: scale(1);
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-.popup.hide {
-  transform: scale(0.9);
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
 }
