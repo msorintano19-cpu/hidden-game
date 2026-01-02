@@ -1,105 +1,103 @@
 body {
-  margin: 0;
+  margin:0;
   font-family: -apple-system, BlinkMacSystemFont;
-  background: #222;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  color: white;
+  background: #f2f2f2;
+  text-align: center;
 }
 
-#start button {
-  font-size: 20px;
-  padding: 15px 30px;
-  border-radius: 14px;
+button {
   border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 18px;
   cursor: pointer;
 }
 
-/* IPHONE */
-.iphone {
-  position: relative;
+.hidden { display: none; }
+
+/* MOCKUP IPHONE */
+.mockup {
   width: 360px;
-  height: 740px;
-  background: black;
-  border-radius: 50px;
-  box-shadow: 0 0 50px rgba(0,0,0,0.6);
+  height: 720px;
+  margin: 20px auto;
+  background: #fff;
+  border-radius: 40px;
+  border: 2px solid #ccc;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-/* Notch */
-.notch {
-  position: relative;
-  height: 30px;
-  width: 150px;
-  background: #111;
-  border-radius: 15px;
-  margin: 0 auto;
-  top: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10px;
-}
-.camera {
-  width: 8px;
-  height: 8px;
-  background: black;
-  border-radius: 50%;
-  border: 2px solid #333;
-}
-.speaker {
-  width: 60px;
-  height: 5px;
-  background: #333;
-  border-radius: 3px;
-}
-
-/* Status bar */
+/* STATUS BAR */
 .statusbar {
+  height: 28px;
+  font-size: 14px;
   display: flex;
   justify-content: space-between;
-  padding: 5px 15px;
-  font-size: 14px;
+  padding: 4px 12px;
+  background: #f7f7f7;
+  color: #000;
+  align-items: center;
 }
 
-/* HOME SCREEN */
+/* SCREEN */
 .screen {
   flex: 1;
-  background: linear-gradient(#1c1c1e, #2c2c2e);
-  padding: 20px;
+  background: #f7f7f7;
+  padding: 10px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 90px;
-  gap: 15px;
-  box-sizing: border-box;
+  gap: 12px;
+  position: relative;
 }
 
+/* APP ICONS */
 .app {
-  background: rgba(255,255,255,0.15);
-  border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 12px;
   cursor: pointer;
-  font-size: 22px;
-  transition: transform 0.2s ease;
 }
-.app:hover {
-  transform: scale(1.05);
-}
-.app img {
-  width: 40px;
-  height: 40px;
-}
+
 .app span {
   font-size: 12px;
-  margin-top: 5px;
+  margin-top: 6px;
   text-align: center;
+}
+
+/* CODE ICON STYLES */
+.icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+}
+
+/* Color & symbols */
+.whatsapp-icon { background: #25D366; }
+.mail-icon { background: #D44638; }
+.safari-icon { background: #0A84FF; }
+.memo-icon { background: #FFD60A; }
+.instagram-icon { background: #C13584; }
+.facebook-icon { background: #1877F2; font-weight:bold; }
+.spotify-icon { background: #1DB954; }
+.map-icon { background: #34C759; }
+.clock-icon { background: #000000; }
+.settings-icon { background: #8E8E93; }
+.appstore-icon { background: #007AFF; }
+
+/* Add symbol inside icon div */
+.icon::after {
+  content: attr(data-symbol);
+  font-size: 24px;
 }
 
 /* APP VIEW */
@@ -108,29 +106,41 @@ body {
   align-items: center;
   gap: 10px;
   margin-bottom: 10px;
+  padding: 5px 10px;
+  background: #f0f0f0;
+  border-bottom: 1px solid #ccc;
 }
+
 .appHeader button {
-  background: #3a3a3c;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 5px 12px;
+  padding: 6px 12px;
+  font-size: 16px;
 }
 
 #appContent {
+  background: #fff;
   flex: 1;
-  background: #1c1c1e;
-  border-radius: 20px;
-  padding: 15px;
+  padding: 10px;
+  border-radius: 10px;
   overflow-y: auto;
+  text-align: left;
+}
+
+/* HOME BAR */
+.homebar {
+  width: 100px;
+  height: 5px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 5px;
+  margin: 8px auto;
 }
 
 /* TRANSIZIONE APERTURA APP */
 .appTransition {
-  transform: scale(0.8);
+  transform: scale(0.9);
   opacity: 0;
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
+
 .appTransition.show {
   transform: scale(1);
   opacity: 1;
@@ -143,22 +153,39 @@ body {
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-/* HOME BAR */
-.homebar {
-  width: 100px;
-  height: 5px;
-  background: rgba(255,255,255,0.4);
-  border-radius: 5px;
-  margin: 10px auto 0 auto;
+/* CHAT STILE WHATSAPP */
+.chatMessage {
+  margin: 6px 0;
+  padding: 8px 12px;
+  border-radius: 18px;
+  max-width: 80%;
 }
 
-/* SIDE BUTTON */
-.side-button {
-  position: absolute;
-  width: 6px;
-  height: 50px;
-  background: #333;
-  border-radius: 3px;
-  right: -10px;
-  top: 150px;
+.chatMessage.user {
+  background: #25D366;
+  color: #fff;
+  margin-left: auto;
+  text-align: right;
+}
+
+.chatMessage.contact {
+  background: #ECE5DD;
+  color: #000;
+  margin-right: auto;
+  text-align: left;
+}
+
+/* EMAIL STILE GMAIL */
+.emailItem {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+
+.emailSender {
+  font-weight: bold;
+}
+
+.emailSubject {
+  color: #555;
+  margin-top: 4px;
 }
