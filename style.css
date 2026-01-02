@@ -1,178 +1,198 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mockup iPhone Interattivo</title>
-<style>
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #ffd93b; /* colore sfondo simile alla tua immagine */
-    font-family: Arial, sans-serif;
-  }
+/* BODY & FONTE */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0; /* sfondo generale */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+}
 
-  .iphone {
-    width: 360px;
-    height: 720px;
-    border: 16px solid #000;
-    border-radius: 40px;
-    background: #fff;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
+/* IPHONE MOCKUP */
+.iphone {
+  width: 360px;
+  height: 720px;
+  border: 16px solid #000;
+  border-radius: 40px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
 
-  /* Capsula altoparlante e fotocamera */
-  .top-bar {
-    height: 30px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+/* TOP BAR / CAPSULA */
+.top-bar {
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  background: #f9f9f9;
+  font-size: 14px;
+  color: #333;
+  position: relative;
+}
 
-  .top-bar::before {
-    content: '';
-    width: 60px;
-    height: 5px;
-    background: #333;
-    border-radius: 3px;
-  }
+.capsula {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 5px;
+  background: #333;
+  border-radius: 3px;
+}
 
-  /* Schermo */
-  .screen {
-    flex: 1;
-    background: linear-gradient(180deg, #ff9d6e, #ff6b6b); /* colore di sfondo gradiente */
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 80px;
-    gap: 10px;
-    padding: 20px 10px;
-    justify-items: center;
-    align-items: center;
-  }
+/* SCHERMO IPHONE */
+.screen {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 80px;
+  gap: 12px;
+  padding: 20px 10px;
+  justify-items: center;
+  align-items: center;
+  background: #fff;
+  transition: all 0.3s ease;
+}
 
-  .app {
-    width: 60px;
-    height: 60px;
-    background: #fff;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-size: 24px;
-    user-select: none;
-    transition: transform 0.2s;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  }
+/* ICONE APP */
+.app {
+  width: 60px;
+  height: 60px;
+  background: #eee;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 28px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
 
-  .app:hover {
-    transform: scale(1.1);
-  }
+.app span {
+  position: absolute;
+  bottom: -18px;
+  font-size: 12px;
+  text-align: center;
+  width: 100%;
+}
 
-  /* Dock */
-  .dock {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    background: rgba(255,255,255,0.2);
-    border-top: 1px solid rgba(0,0,0,0.1);
-  }
+.app:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
 
-  /* Popup App */
-  .popup {
-    position: absolute;
-    top: 50px;
-    left: 20px;
-    right: 20px;
-    bottom: 50px;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-  }
+/* DOCK */
+.dock {
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  background: rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
 
-  .popup h2 {
-    margin-bottom: 20px;
-  }
+/* POPUP APP */
+.popup {
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  right: 20px;
+  bottom: 50px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: none;
+  flex-direction: column;
+  z-index: 10;
+  overflow: hidden;
+}
 
-  .close-btn {
-    padding: 10px 20px;
-    background: #333;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-</style>
-</head>
-<body>
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background: #f1f1f1;
+  border-bottom: 1px solid #ccc;
+}
 
-<div class="iphone">
-  <div class="top-bar"></div>
-  <div class="screen">
-    <div class="app" data-app="Mail">📧</div>
-    <div class="app" data-app="Calendar">📅</div>
-    <div class="app" data-app="Photos">🖼️</div>
-    <div class="app" data-app="Camera">📷</div>
+.popup-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
 
-    <div class="app" data-app="Maps">🗺️</div>
-    <div class="app" data-app="Clock">⏰</div>
-    <div class="app" data-app="Weather">☀️</div>
-    <div class="app" data-app="News">📰</div>
+.close-btn {
+  padding: 6px 12px;
+  background: #007aff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
 
-    <div class="app" data-app="Home">🏠</div>
-    <div class="app" data-app="Notes">📝</div>
-    <div class="app" data-app="Stocks">📈</div>
-    <div class="app" data-app="Wallet">💳</div>
+/* CONTENUTO APP */
+.popup-content {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  font-size: 14px;
+  background: #fafafa;
+}
 
-    <div class="app" data-app="WhatsApp">💬</div>
-    <div class="app" data-app="AppStore">🛍️</div>
-    <div class="app" data-app="Health">❤️</div>
-    <div class="app" data-app="Settings">⚙️</div>
-  </div>
+/* WHATSAPP MESSAGGI */
+.message {
+  margin: 6px 0;
+  padding: 8px 12px;
+  border-radius: 18px;
+  max-width: 75%;
+  word-wrap: break-word;
+  display: inline-block;
+  clear: both;
+}
 
-  <div class="dock">
-    <div class="app" data-app="Facebook">📘</div>
-    <div class="app" data-app="Instagram">📸</div>
-    <div class="app" data-app="Messages">💚</div>
-    <div class="app" data-app="Messenger">💙</div>
-  </div>
+.from-luca {
+  background: #dcf8c6;
+  align-self: flex-end;
+  float: right;
+}
 
-  <!-- Popup App -->
-  <div class="popup" id="popup">
-    <h2 id="app-title">App</h2>
-    <button class="close-btn" onclick="closeApp()">Chiudi</button>
-  </div>
-</div>
+.from-other {
+  background: #fff;
+  align-self: flex-start;
+  float: left;
+}
 
-<script>
-  const apps = document.querySelectorAll('.app');
-  const popup = document.getElementById('popup');
-  const appTitle = document.getElementById('app-title');
+/* SCROLL BARRA */
+.popup-content::-webkit-scrollbar {
+  width: 6px;
+}
 
-  apps.forEach(app => {
-    app.addEventListener('click', () => {
-      const appName = app.getAttribute('data-app');
-      appTitle.textContent = appName;
-      popup.style.display = 'flex';
-    });
-  });
+.popup-content::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
 
-  function closeApp() {
-    popup.style.display = 'none';
-  }
-</script>
+.popup-content::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.05);
+}
 
-</body>
-</html>
+/* TRANSIZIONE DOLCE APERTURA */
+.popup.show {
+  opacity: 1;
+  transform: scale(1);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.popup.hide {
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
